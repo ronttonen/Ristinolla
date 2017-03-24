@@ -46,5 +46,36 @@
         android:text=" "
         android:textSize="75px" />
 
+    <Button android:id="@+id/topRight"
+        android:layout_width="100px"
+        android:layout_height="120px"
+        android:layout_toRightOf="@id/center"
+        android:layout_alignBaseline="@id/top"
+        android:text=" "
+        android:textSize="75px" />
+
+    <Button android:id="@+id/topLeft"
+        android:layout_width="100px"
+        android:layout_height="120px"
+        android:layout_toLeftOf="@id/center"
+        android:layout_alignBaseline="@id/top"
+        android:text=" "
+        android:textSize="75px" />
+
+    <Button android:id="@+id/bottomRight"
+        android:layout_width="100px"
+        android:layout_height="120px"
+        android:layout_toRightOf="@id/center"
+        android:layout_alignBaseline="@id/bottom"
+        android:text=" "
+        android:textSize="75px" />
+
+    <Button android:id="@+id/bottomLeft"
+        android:layout_width="100px"
+        android:layout_height="120px"
+        android:layout_toLeftOf="@id/center"
+        android:layout_alignBaseline="@id/bottom"
+        android:text=" "
+        android:textSize="75px" />
 
 </RelativeLayout>
