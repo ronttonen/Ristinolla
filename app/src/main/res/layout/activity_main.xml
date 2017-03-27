@@ -16,13 +16,13 @@
         android:textSize="75px"/>
 
     <LinearLayout
-        android:layout_width="300px"
+        android:layout_width="360px"
         android:layout_height="120px"
         android:layout_centerInParent="true"
         android:id="@+id/centerRow">
 
     <Button android:id="@+id/left"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:textSize="75px"
@@ -30,7 +30,7 @@
         android:onClick=""/>
 
     <Button android:id="@+id/center"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -38,7 +38,7 @@
         android:textSize="75px" />
 
     <Button android:id="@+id/right"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -47,13 +47,13 @@
 
         </LinearLayout>
 <LinearLayout
-    android:layout_width="300px"
+    android:layout_width="360px"
     android:layout_height="120px"
     android:id="@+id/firsRow"
     android:layout_above="@id/centerRow"
     android:layout_centerInParent="true">
     <Button android:id="@+id/topLeft"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -61,7 +61,7 @@
         android:onClick=""/>
 
     <Button android:id="@+id/top"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -69,7 +69,7 @@
         android:onClick=""/>
 
     <Button android:id="@+id/topRight"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -77,13 +77,13 @@
         android:onClick=""/>
     </LinearLayout>
 <LinearLayout
-    android:layout_width="300px"
+    android:layout_width="360px"
     android:layout_height="120px"
     android:id="@+id/thirdRow"
     android:layout_below="@id/centerRow"
     android:layout_centerInParent="true">
     <Button android:id="@+id/bottomLeft"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -91,7 +91,7 @@
         android:onClick="" />
 
     <Button android:id="@+id/bottom"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
@@ -99,7 +99,7 @@
         android:onClick=""/>
 
     <Button android:id="@+id/bottomRight"
-        android:layout_width="100px"
+        android:layout_width="120px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
