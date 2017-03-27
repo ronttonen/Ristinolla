@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.ristinolla.MainActivity">
+
+    <TextView
+        android:id="@+id/turn"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75px"
+        android:text="Turn X"
+        android:textSize="75px"/>
+
     <LinearLayout
         android:layout_width="300px"
         android:layout_height="120px"
@@ -16,7 +26,8 @@
         android:layout_height="120px"
         android:text=" "
         android:textSize="75px"
-        android:padding="1px" />
+        android:padding="1px"
+        android:onClick=""/>
 
     <Button android:id="@+id/center"
         android:layout_width="100px"
@@ -31,7 +42,8 @@
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
-        android:textSize="75px" />
+        android:textSize="75px"
+        android:onClick=""/>
 
         </LinearLayout>
 <LinearLayout
@@ -45,7 +57,8 @@
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
-        android:textSize="75px" />
+        android:textSize="75px"
+        android:onClick=""/>
 
     <Button android:id="@+id/top"
         android:layout_width="100px"
@@ -53,15 +66,15 @@
         android:text=" "
         android:padding="1px"
         android:textSize="75px"
-        />
+        android:onClick=""/>
 
     <Button android:id="@+id/topRight"
         android:layout_width="100px"
         android:layout_height="120px"
-
         android:text=" "
         android:padding="1px"
-        android:textSize="75px" />
+        android:textSize="75px"
+        android:onClick=""/>
     </LinearLayout>
 <LinearLayout
     android:layout_width="300px"
@@ -75,21 +88,46 @@
         android:text=" "
         android:padding="1px"
         android:textSize="75px"
-         />
+        android:onClick="" />
 
     <Button android:id="@+id/bottom"
         android:layout_width="100px"
         android:layout_height="120px"
-
         android:text=" "
         android:padding="1px"
-        android:textSize="75px" />
+        android:textSize="75px"
+        android:onClick=""/>
 
     <Button android:id="@+id/bottomRight"
         android:layout_width="100px"
         android:layout_height="120px"
         android:text=" "
         android:padding="1px"
-        android:textSize="75px" />
+        android:textSize="75px"
+        android:onClick=""/>
 </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Game"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:id="@+id/mainMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Main Menu"
+            android:layout_alignParentRight="true"
+            android:onClick="goToMainMenu"/>
+
+
+    </RelativeLayout>
+
 </RelativeLayout>
