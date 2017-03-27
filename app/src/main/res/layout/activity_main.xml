@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.ristinolla.MainActivity">
+<<<<<<< HEAD
     
     <TextView
         android:id="@+id/turn"
@@ -15,6 +16,8 @@
         android:text="Turn X"
         android:textSize="75px"/>
 
+=======
+>>>>>>> parent of 047d32f... jotain
 
     <LinearLayout
         android:layout_width="300px"
