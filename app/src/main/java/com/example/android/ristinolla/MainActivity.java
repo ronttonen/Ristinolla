@@ -5,34 +5,33 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
+
+
 import android.widget.TextView;
 
 import java.util.Random;
 
-import static android.R.attr.button;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static com.example.android.ristinolla.R.id.activity_main;
-import static com.example.android.ristinolla.R.id.center;
 
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Random rnd = new Random();
-        int color = Color.argb(rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         findViewById(R.id.activity_main).setBackgroundColor(color);
-
+        switchTurn();
     }
 
-    int turn = 0;
 
+
+
+    Random rnd = new Random();
     int board[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int color = Color.argb(rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    int turn = rnd.nextInt((1 - 0) + 1) + 0;
+
 
 
 
@@ -198,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             turn = 1;
             vv.setText("Turn O");
+
         }
     }
 
@@ -210,12 +210,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkWin() {
 
-        if ((board[0] == 1 && board[5] == 1 && board[8] == 1) || (board[0] == 1 && board[1] == 1 &&
-                board[2] == 1) || (board[0] == 1 && board[3] == 1 && board[7] == 1)) {
+        if ((board[0] == 1 && board[1] == 1 &&
+                board[2] == 1) || (board[0] == 1 && board[5] == 1 &&
+                board[8] == 1) || (board[0] == 1 && board[3] == 1 &&
+                board[7] == 1)|| (board[0] == 1 && board[4] == 1 &&
+                board[6] == 1)|| (board[1] == 1 && board[3] == 1 &&
+                board[6] == 1)|| (board[2] == 1 && board[4] == 1 &&
+                board[7] == 1)|| (board[3] == 1 && board[5] == 1 &&
+                board[4] == 1)|| (board[6] == 1 && board[8] == 1 &&
+                board[7] == 1)) {
             checkAll();
             TextView vv = (TextView) findViewById(R.id.turn);
             vv.setText("X WINS!");
 
+        }
+
+        else if ((board[0] == 2 && board[1] == 2 &&
+                board[2] == 2) || (board[0] == 2 && board[5] == 2 &&
+                board[8] == 2) || (board[0] == 2 && board[3] == 2 &&
+                board[7] == 2)|| (board[0] == 2 && board[4] == 2 &&
+                board[6] == 2)|| (board[1] == 2 && board[3] == 2 &&
+                board[6] == 2)|| (board[2] == 2 && board[4] == 2 &&
+                board[7] == 2)|| (board[3] == 2 && board[5] == 2 &&
+                board[4] == 2)|| (board[6] == 2 && board[8] == 2 &&
+                board[7] == 2)) {
+            checkAll();
+            TextView vv = (TextView) findViewById(R.id.turn);
+            vv.setText("O WINS!");
         }
     }
 
