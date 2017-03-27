@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
 
@@ -25,34 +24,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     Random rnd = new Random();
     int board[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     int color = Color.argb(rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-    int turn = rnd.nextInt((1 - 0) + 1) + 0;
-
-
-
+    int turn = rnd.nextInt(2);
 
 
     public void markSquare(View v) {
         TextView tv = (TextView) findViewById(v.getId());
 
 
-
-        if (turn == 0 && isChecked(v.getId()) == 0){
+        if (turn == 0 && isChecked(v.getId()) == 0) {
             tv.setText("X");
             checkSquare(v.getId());
             switchTurn();
             checkWin();
 
-        }
-        else if (turn == 1 && isChecked(v.getId()) == 0){
+
+        } else if (turn == 1 && isChecked(v.getId()) == 0) {
             tv.setText("O");
             checkSquare(v.getId());
             switchTurn();
             checkWin();
+
 
         }
 
@@ -68,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     board[0] = 2;
             }
-        }
-        else if (x == R.id.left) {
+        } else if (x == R.id.left) {
             switch (turn) {
                 case 0:
                     board[1] = 1;
@@ -78,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     board[1] = 2;
                     break;
             }
-        }
-        else if (x == R.id.right) {
+        } else if (x == R.id.right) {
             switch (turn) {
                 case 0:
                     board[2] = 1;
@@ -88,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     board[2] = 2;
                     break;
             }
-        }
-        else if (x == R.id.topLeft) {
+        } else if (x == R.id.topLeft) {
             switch (turn) {
                 case 0:
                     board[3] = 1;
@@ -98,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     board[3] = 2;
                     break;
             }
-        }
-        else if (x == R.id.topRight) {
+        } else if (x == R.id.topRight) {
             switch (turn) {
                 case 0:
                     board[4] = 1;
@@ -108,8 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     board[4] = 2;
                     break;
             }
-        }
-        else if (x == R.id.top) {
+        } else if (x == R.id.top) {
             switch (turn) {
                 case 0:
                     board[5] = 1;
@@ -118,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     board[5] = 2;
                     break;
             }
-        }
-        else if (x == R.id.bottomLeft) {
+        } else if (x == R.id.bottomLeft) {
             switch (turn) {
                 case 0:
                     board[6] = 1;
@@ -128,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     board[6] = 2;
                     break;
             }
-        }
-        else if (x == R.id.bottomRight) {
+        } else if (x == R.id.bottomRight) {
             switch (turn) {
                 case 0:
                     board[7] = 1;
@@ -138,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     board[7] = 2;
                     break;
             }
-        }
-        else if (x == R.id.bottom) {
+        } else if (x == R.id.bottom) {
             switch (turn) {
                 case 0:
                     board[8] = 1;
@@ -157,38 +143,28 @@ public class MainActivity extends AppCompatActivity {
     public int isChecked(int x) {
         if (x == R.id.center) {
             return board[0];
-        }
-        else if (x == R.id.left) {
+        } else if (x == R.id.left) {
             return board[1];
-        }
-        else if (x == R.id.right) {
+        } else if (x == R.id.right) {
             return board[2];
-        }
-        else if (x == R.id.topLeft) {
+        } else if (x == R.id.topLeft) {
             return board[3];
-        }
-        else if (x == R.id.topRight) {
+        } else if (x == R.id.topRight) {
             return board[4];
-        }
-        else if (x == R.id.top) {
+        } else if (x == R.id.top) {
             return board[5];
-        }
-        else if (x == R.id.bottomLeft) {
+        } else if (x == R.id.bottomLeft) {
             return board[6];
-        }
-        else if (x == R.id.bottomRight) {
+        } else if (x == R.id.bottomRight) {
             return board[7];
-        }
-        else if (x == R.id.bottom) {
+        } else if (x == R.id.bottom) {
             return board[8];
-        }
-
-        else {
+        } else {
             return 0;
         }
     }
 
-    public  void switchTurn() {
+    public void switchTurn() {
         TextView vv = (TextView) findViewById(R.id.turn);
         if (turn == 1) {
             turn = 0;
@@ -213,31 +189,38 @@ public class MainActivity extends AppCompatActivity {
         if ((board[0] == 1 && board[1] == 1 &&
                 board[2] == 1) || (board[0] == 1 && board[5] == 1 &&
                 board[8] == 1) || (board[0] == 1 && board[3] == 1 &&
-                board[7] == 1)|| (board[0] == 1 && board[4] == 1 &&
-                board[6] == 1)|| (board[1] == 1 && board[3] == 1 &&
-                board[6] == 1)|| (board[2] == 1 && board[4] == 1 &&
-                board[7] == 1)|| (board[3] == 1 && board[5] == 1 &&
-                board[4] == 1)|| (board[6] == 1 && board[8] == 1 &&
+                board[7] == 1) || (board[0] == 1 && board[4] == 1 &&
+                board[6] == 1) || (board[1] == 1 && board[3] == 1 &&
+                board[6] == 1) || (board[2] == 1 && board[4] == 1 &&
+                board[7] == 1) || (board[3] == 1 && board[5] == 1 &&
+                board[4] == 1) || (board[6] == 1 && board[8] == 1 &&
                 board[7] == 1)) {
             checkAll();
             TextView vv = (TextView) findViewById(R.id.turn);
             vv.setText("X WINS!");
 
-        }
 
-        else if ((board[0] == 2 && board[1] == 2 &&
+        } else if ((board[0] == 2 && board[1] == 2 &&
                 board[2] == 2) || (board[0] == 2 && board[5] == 2 &&
                 board[8] == 2) || (board[0] == 2 && board[3] == 2 &&
-                board[7] == 2)|| (board[0] == 2 && board[4] == 2 &&
-                board[6] == 2)|| (board[1] == 2 && board[3] == 2 &&
-                board[6] == 2)|| (board[2] == 2 && board[4] == 2 &&
-                board[7] == 2)|| (board[3] == 2 && board[5] == 2 &&
-                board[4] == 2)|| (board[6] == 2 && board[8] == 2 &&
+                board[7] == 2) || (board[0] == 2 && board[4] == 2 &&
+                board[6] == 2) || (board[1] == 2 && board[3] == 2 &&
+                board[6] == 2) || (board[2] == 2 && board[4] == 2 &&
+                board[7] == 2) || (board[3] == 2 && board[5] == 2 &&
+                board[4] == 2) || (board[6] == 2 && board[8] == 2 &&
                 board[7] == 2)) {
             checkAll();
             TextView vv = (TextView) findViewById(R.id.turn);
             vv.setText("O WINS!");
+
+        } else if (board[0] != 0 && board[1] != 0 && board[2] != 0 && board[3] != 0 && board[4] != 0
+                && board[5] != 0 && board[6] != 0 && board[7] != 0 && board[8] != 0) {
+            TextView vv = (TextView) findViewById(R.id.turn);
+            vv.setText("It's a draw!");
+
         }
+
+
     }
 
 

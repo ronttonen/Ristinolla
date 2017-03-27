@@ -19,4 +19,8 @@ public class menu extends AppCompatActivity {
     public void goToGame(View v) {
         startActivity(new Intent(menu.this, MainActivity.class));
     }
+
+    public void toComputer(View v) {
+        startActivity(new Intent(menu.this, Computer.class));
+    }
 }

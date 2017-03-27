@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/computer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.ristinolla.Computer">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Push me"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60px"
+        android:onClick="markSquare"/>
+
+    <TextView
+        android:id="@+id/turn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="185px"
+        android:text=" "
+        android:textSize="80px" />
+
+    <LinearLayout
+        android:id="@+id/centerRow"
+        android:layout_width="360px"
+        android:layout_height="120px"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/left"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/center"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/firsRow"
+        android:layout_width="360px"
+        android:layout_height="120px"
+        android:layout_above="@id/centerRow"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/topLeft"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/top"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/topRight"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thirdRow"
+        android:layout_width="360px"
+        android:layout_height="120px"
+        android:layout_below="@id/centerRow"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/bottomLeft"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/bottom"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+
+        <Button
+            android:id="@+id/bottomRight"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:onClick="markSquare"
+            android:padding="1px"
+            android:text=" "
+            android:textSize="75px" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:onClick="newGame"
+            android:text="New Game" />
+
+        <Button
+            android:id="@+id/mainMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="goToMainMenu"
+            android:text="Main Menu" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
