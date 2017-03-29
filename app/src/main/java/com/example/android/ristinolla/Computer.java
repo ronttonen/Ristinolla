@@ -73,7 +73,7 @@ public class Computer extends AppCompatActivity {
                     }
 
                 }
-            }, 500);
+            }, 750);
 
 
 
