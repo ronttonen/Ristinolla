@@ -22,6 +22,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="125px"
         android:onClick="toComputer"
-        android:text="No Players" />
+        android:text="One Player" />
 
 </RelativeLayout>

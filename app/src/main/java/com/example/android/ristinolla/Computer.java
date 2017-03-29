@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import android.os.Handler;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
@@ -35,7 +36,7 @@ public class Computer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.computer);
         findViewById(R.id.computer).setBackgroundColor(color);
-
+        switchTurn();
     }
 
     Random rnd = new Random();
@@ -43,7 +44,8 @@ public class Computer extends AppCompatActivity {
 
     // pick random background
     int color = Color.argb(rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-    int turn = 0; // set X to start
+    int turn = 1;
+    // set X to start
 
 
 
@@ -58,11 +60,20 @@ public class Computer extends AppCompatActivity {
             checkSquare(v.getId());
             switchTurn();
             checkWin();
-            ai();
-            if (!win){
-                switchTurn();
-                checkWin();
-            }
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ai();
+
+                    if (!win){
+                        switchTurn();
+                        checkWin();
+                    }
+
+                }
+            }, 500);
 
 
 
@@ -200,9 +211,6 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[0] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[0] = 1;
                 }
 
             } else if (target == 1) {
@@ -210,9 +218,6 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[1] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[1] = 1;
                 }
 
             } else if (target == 2) {
@@ -220,19 +225,12 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[2] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[2] = 1;
                 }
-
             } else if (target == 3) {
                 TextView ff = (TextView) findViewById(R.id.topLeft);
                 if (turn == 1) {
                     ff.setText("O");
                     board[3] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[3] = 1;
                 }
 
             } else if (target == 4) {
@@ -240,9 +238,6 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[4] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[4] = 1;
                 }
 
             } else if (target == 5) {
@@ -250,19 +245,12 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[5] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[5] = 1;
                 }
-
             } else if (target == 6) {
                 TextView ff = (TextView) findViewById(R.id.bottomLeft);
                 if (turn == 1) {
                     ff.setText("O");
                     board[6] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[6] = 1;
                 }
 
             } else if (target == 7) {
@@ -270,9 +258,6 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[7] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[7] = 1;
                 }
 
             } else if (target == 8) {
@@ -280,9 +265,6 @@ public class Computer extends AppCompatActivity {
                 if (turn == 1) {
                     ff.setText("O");
                     board[8] = 2;
-                } else if (turn == 0) {
-                    ff.setText("X");
-                    board[8] = 1;
                 }
 
 
