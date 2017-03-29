@@ -30,7 +30,7 @@ public class Computer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.computer);
         findViewById(R.id.computer).setBackgroundColor(color);
-
+        switchTurn();
     }
 
     Random rnd = new Random();
@@ -38,7 +38,8 @@ public class Computer extends AppCompatActivity {
 
     // pick random background
     int color = Color.argb(rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-    int turn = 0; // set X to start
+    int turn = 1;
+    // set X to start
 
 
 
