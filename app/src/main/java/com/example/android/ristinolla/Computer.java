@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import android.os.Handler;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
@@ -55,12 +56,20 @@ public class Computer extends AppCompatActivity {
             checkSquare(v.getId());
             switchTurn();
             checkWin();
-            ai();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ai();
 
-            if (!win){
-                switchTurn();
-                checkWin();
-            }
+                    if (!win){
+                        switchTurn();
+                        checkWin();
+                    }
+
+                }
+            }, 500);
+
 
 
 
