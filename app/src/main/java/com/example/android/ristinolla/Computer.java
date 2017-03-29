@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
 import static android.view.View.X;
 import static com.example.android.ristinolla.R.id.center;
 
@@ -40,31 +41,24 @@ public class Computer extends AppCompatActivity {
 
 
 
-    public void play(int x) {
-
-            if (turn == 1 && isChecked(x) == 0) {
-                ai();
-                switchTurn();
-                checkWin();
 
 
+    public void markSquare(View v) {
+        TextView tv = (TextView) findViewById(v.getId());
 
-            } else if (turn == 0 && isChecked(x) == 0){
-                ai();
-                switchTurn();
-                checkWin();
-            }
 
-            else {
-                boolean v = true;
-            }
+        if (turn == 0 && isChecked(v.getId()) == 0) {
+            tv.setText("X");
+            checkSquare(v.getId());
+            switchTurn();
+            checkWin();
+            ai();
+            switchTurn();
+            checkWin();
+
 
         }
-
-
-        public void markSquare(View v) {
-            play(v.getId());
-        }
+    }
 
 
     public int isChecked(int x) {
@@ -107,6 +101,91 @@ public class Computer extends AppCompatActivity {
         }
     }
 
+    public void checkSquare(int x) {
+        if (x == R.id.center) {
+            switch (turn) {
+                case 0:
+                    board[0] = 1;
+                    break;
+                case 1:
+                    board[0] = 2;
+            }
+        } else if (x == R.id.left) {
+            switch (turn) {
+                case 0:
+                    board[1] = 1;
+                    break;
+                case 1:
+                    board[1] = 2;
+                    break;
+            }
+        } else if (x == R.id.right) {
+            switch (turn) {
+                case 0:
+                    board[2] = 1;
+                    break;
+                case 1:
+                    board[2] = 2;
+                    break;
+            }
+        } else if (x == R.id.topLeft) {
+            switch (turn) {
+                case 0:
+                    board[3] = 1;
+                    break;
+                case 1:
+                    board[3] = 2;
+                    break;
+            }
+        } else if (x == R.id.topRight) {
+            switch (turn) {
+                case 0:
+                    board[4] = 1;
+                    break;
+                case 1:
+                    board[4] = 2;
+                    break;
+            }
+        } else if (x == R.id.top) {
+            switch (turn) {
+                case 0:
+                    board[5] = 1;
+                    break;
+                case 1:
+                    board[5] = 2;
+                    break;
+            }
+        } else if (x == R.id.bottomLeft) {
+            switch (turn) {
+                case 0:
+                    board[6] = 1;
+                    break;
+                case 1:
+                    board[6] = 2;
+                    break;
+            }
+        } else if (x == R.id.bottomRight) {
+            switch (turn) {
+                case 0:
+                    board[7] = 1;
+                    break;
+                case 1:
+                    board[7] = 2;
+                    break;
+            }
+        } else if (x == R.id.bottom) {
+            switch (turn) {
+                case 0:
+                    board[8] = 1;
+                    break;
+                case 1:
+                    board[8] = 2;
+                    break;
+            }
+
+        }
+    }
+
     public void checkAll() {
         for (int i = 0; i < board.length; i++) {
             board[i] = 3;
@@ -121,7 +200,7 @@ public class Computer extends AppCompatActivity {
             target = rnd.nextInt(9);
         }
         while (board[target] != 0 || (board[0] != 0 && board[1] != 0 && board[2] != 0 && board[3] != 0 && board[4] != 0
-                && board[5] != 0 && board[6] != 0 && board[7] != 0 && board[8] != 0));
+                && board[5] != 0 && board[6] != 0 && board[7] != 0 && board[8] != 0) || (win == true));
         if (target == 0) {
             TextView ff = (TextView) findViewById(R.id.center);
             if (turn == 1) {

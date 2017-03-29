@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.ristinolla.Computer">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Push me"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60px"
-        android:onClick="markSquare"/>
 
     <TextView
         android:id="@+id/turn"
