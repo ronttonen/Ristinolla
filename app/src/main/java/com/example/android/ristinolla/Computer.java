@@ -1,10 +1,15 @@
 package com.example.android.ristinolla;
-
+import android.view.animation.Animation.AnimationListener;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -43,7 +48,6 @@ public class Computer extends AppCompatActivity {
 
 
 
-
     public void markSquare(View v) {
         // get target
         TextView tv = (TextView) findViewById(v.getId());
@@ -55,7 +59,6 @@ public class Computer extends AppCompatActivity {
             switchTurn();
             checkWin();
             ai();
-
             if (!win){
                 switchTurn();
                 checkWin();
@@ -186,6 +189,7 @@ public class Computer extends AppCompatActivity {
 
     public void ai() {
         int target;
+
         if (!win) {
             do {
                 target = rnd.nextInt(9); // get random number 0-9 WOW SO WISE AI
