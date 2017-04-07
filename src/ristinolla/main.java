@@ -6,35 +6,86 @@ import java.util.InputMismatchException;
 public class main{
 	private static Scanner lu = new Scanner(System.in);
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		p("Mikä on nimesi");
-		String name = lu.nextLine();
+		
+		// define variables
+		int gametype = 0;
+		String p1 = null;
+		String p2 = null;
+		
+		//gametype must be defined 
+		do{
+			try { // single or multiplayer
+				p("Yksin(1) vai kaksinpeli(2), syötä 1 tai 2");
+				gametype = lu.nextInt();
+				if (gametype == 1){
+					p1 = "bot";
+				}
+			}
+			catch(InputMismatchException e){
+				break;
+			}
+		}
+		while(gametype == 1 && gametype == 2);
+		
+		//Player 1 name always needed
+		do{
+			try { //p1 name
+				p("Pelaajan 1 nimi");
+				p1 = lu.next();
+			}
+			catch(InputMismatchException e){
+				break;
+			}
+		}
+		while (p1 == null);
+		//get player 2 name if needed
+		if (gametype == 2 && p1 != null){
+			do {
+				try { //p2 name
+					p("Pelaajan 2 nimi");
+					p2 = lu.next();
+				}
+				catch(InputMismatchException e){
+					break;
+				}
+			}
+			while (p2 == null);
+		}
+		
+		
 		int turn = 0;
 		int win = 0;
+		int a = 0;
 		botDance(1, 250); // LOOPS, WAIT
 		char[] taulu = new char[9]; 
 		for (int i=0;i<taulu.length;i++){
-				int a = i+1;
+				a = i+1;
 				taulu[i] = Character.forDigit(a, 10);			
 		}
 		int turn_count = 0;
 		do {
+			clear();
+			tulostaTaulu(taulu);
 			win = checkWin(taulu);
-			if (a == 1){
+			p(win + " ");
+			if (win == 1){
 				p("X VOITTI");
-				
+				victoryDance(p1);
+				turn = 2;
 			}
-			else if(a == 2){
+			else if(win == 2){
 				p("O VOITTI");
+				victoryDance(p2);
+				turn = 2;
 			}
-			else if(a == 3){
+			else if(win == 3){
 				p("TASAPELI");
+				turn = 2;
 			}
-			else{
-				if (turn == 0){
+			else if (win == 0){
+				if (turn == 0 && win == 0){
 					do{
-						clear();
-						tulostaTaulu(taulu);
+						
 						p("Pelaajan X vuoro syötä 1-9");
 						int sy;
 						try{
@@ -54,36 +105,63 @@ public class main{
 					while (turn == 0);
 				}
 				else {
-					do{
+					if (gametype == 2 && win == 0){
+						do{
+							p("Pelaajan O vuoro syötä 1-9");
+							int sy;
+							try{
+								sy = lu.nextInt(); // TRY CATCH
+							}
+							catch(InputMismatchException e){
+								break;
+							}
+							if (sy > 9 || sy < 1){
+								break;
+							}
+							if (taulu[sy-1] != 'X' && taulu[sy-1] != 'O'){
+								taulu[sy-1] = 'O';
+								turn = 0;
+							}
+						}
+						while(turn == 1);
+					}
+					else if (gametype == 1 && turn == 1 && win == 0){
+						wait(750);
 						clear();
 						tulostaTaulu(taulu);
-						p("Pelaajan O vuoro syötä 1-9");
-						int sy;
-						try{
-							sy = lu.nextInt(); // TRY CATCH
-						}
-						catch(InputMismatchException e){
-							break;
-						}
-						if (sy > 9 || sy < 1){
-							break;
-						}
-						if (taulu[sy-1] != 'X' && taulu[sy-1] != 'O'){
-							taulu[sy-1] = 'O';
-							turn = 0;
-						}
+						botPelaa(taulu);
+						turn = 0;
 					}
-					while(turn == 1);
 				}
-				turn_count++;
-				if (turn_count==8){
-					win = 1;
+				win = checkWin(taulu);
+				if (win == 1){
+					p("X VOITTI");
+					victoryDance(p1);
+					turn = 2;
+				}
+				else if(win == 2){
+					p("O VOITTI");
+					victoryDance(p2);
+					turn = 2;
+				}
+				else if(win == 3){
+					p("TASAPELI");
+					turn = 2;
 				}
 			}
 		}
 		while(win == 0);
 		clear();
 		tulostaTaulu(taulu);
+		if (win == 1){
+			p("X VOITTI");
+		}
+		else if(win == 2){
+			p("O VOITTI");
+		}
+		else if(win == 3){
+			p("TASAPELI");
+		}
 	}
 	
 	/*FUNCTIONS START*/
@@ -131,27 +209,25 @@ public class main{
 		
 	}
 	public static int checkWin(char[] taulu){
-		  if ((taulu[0] == 'X' && taulu[1] == 'X' &&
-	                taulu[2] == 'X') || (taulu[0] == 'X' && taulu[5] == 'X' &&
-	                taulu[8] == 'X') || (taulu[0] == 'X' && taulu[3] == 'X' &&
-	                taulu[7] == 'X') || (taulu[0] == 'X' && taulu[4] == 'X' &&
-	                taulu[6] == 'X') || (taulu[1] == 'X' && taulu[3] == 'X' &&
-	                taulu[6] == 'X') || (taulu[2] == 'X' && taulu[4] == 'X' &&
-	                taulu[7] == 'X') || (taulu[3] == 'X' && taulu[5] == 'X' &&
-	                taulu[4] == 'X') || (taulu[6] == 'X' && taulu[8] == 'X' &&
-	                taulu[7] == 'X')) {
+		  if (	(taulu[0] == 'X' && taulu[1] == 'X' && taulu[2] == 'X') || 
+				(taulu[3] == 'X' && taulu[4] == 'X' && taulu[5] == 'X') || 
+				(taulu[6] == 'X' && taulu[7] == 'X' && taulu[8] == 'X') || 
+				(taulu[0] == 'X' && taulu[4] == 'X' && taulu[8] == 'X') || 
+				(taulu[6] == 'X' && taulu[4] == 'X' && taulu[2] == 'X') || 
+				(taulu[0] == 'X' && taulu[3] == 'X' && taulu[6] == 'X') || 
+				(taulu[1] == 'X' && taulu[4] == 'X' && taulu[7] == 'X') || 
+				(taulu[2] == 'X' && taulu[5] == 'X' && taulu[8] == 'X')) {
 			  		// X 
 			  	return 1;
 
-	        } else if ((taulu[0] == 'O' && taulu[1] == 'O' &&
-	                taulu[2] == 'O') || (taulu[0] == 'O' && taulu[5] == 'O' &&
-	                taulu[8] == 'O') || (taulu[0] == 'O' && taulu[3] == 'O' &&
-	                taulu[7] == 'O') || (taulu[0] == 'O' && taulu[4] == 'O' &&
-	                taulu[6] == 'O') || (taulu[1] == 'O' && taulu[3] == 'O' &&
-	                taulu[6] == 'O') || (taulu[2] == 'O' && taulu[4] == 'O' &&
-	                taulu[7] == 'O') || (taulu[3] == 'O' && taulu[5] == 'O' &&
-	                taulu[4] == 'O') || (taulu[6] == 'O' && taulu[8] == 'O' &&
-	                taulu[7] == 'O')) {
+	        } else if ((taulu[0] == 'O' && taulu[1] == 'O' && taulu[2] == 'O') || 
+					(taulu[3] == 'O' && taulu[4] == 'O' && taulu[5] == 'O') || 
+					(taulu[6] == 'O' && taulu[7] == 'O' && taulu[8] == 'O') || 
+					(taulu[0] == 'O' && taulu[4] == 'O' && taulu[8] == 'O') || 
+					(taulu[6] == 'O' && taulu[4] == 'O' && taulu[2] == 'O') || 
+					(taulu[0] == 'O' && taulu[3] == 'O' && taulu[6] == 'O') || 
+					(taulu[1] == 'O' && taulu[4] == 'O' && taulu[7] == 'O') || 
+					(taulu[2] == 'O' && taulu[5] == 'O' && taulu[8] == 'O')) {
 	            // O WINS
 	        	return 2;
 	        } else if (taulu[0] != '1' && taulu[1] != '2' && taulu[2] != '3' && taulu[3] != '4' && taulu[4] != '5'
@@ -164,4 +240,29 @@ public class main{
 	        }
 
 	}
+	
+	//botPelaa palauttaa numeron 0-9 mihin ruutuun se laittaa arvon
+	public static int botPelaa(char[] t){
+		// BOT always O
+		if (t[5] != 'X' && t[5] != 'O'){
+			return (int) 5;
+		}
+		return 0;
+		
+	}
+	
+	public static void victoryDance(String p){
+		for (int i=0;i<50;i++){
+			for (int a=0;a<i;a++){
+				System.out.print("-");
+			}
+			System.out.print(p + " Voitti!");
+			for (int b=50;b>i;b--){
+				System.out.print("-");
+			}
+			wait(100);
+			clear();
+		}
+	}
+	
 }
